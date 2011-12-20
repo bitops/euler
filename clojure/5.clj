@@ -1,4 +1,4 @@
-;; solution to problem 5
+;; Solution to problem 5
 
 ;; infinite sequence
 (def inf (iterate #(inc %) 1))

@@ -1,9 +1,6 @@
-# technically, this implementation should work, but I should haven't found a way to 
-# get it to complete in any reasonable amount of time. that is, ever. :)
-puts "Starting."
+# Solution to problem 5
 n = 1
 while true do
-	puts "Testing #{n}"
 	result = (1..20).map {|i| n % i }.reduce(:+)
 	if result == 0
 		break
