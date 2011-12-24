@@ -1,16 +1,29 @@
-;; Solution to problem 5
 
-;; infinite sequence
-(def inf (iterate #(inc %) 1))
+(def acc (atom 1))
 
-;; the range we're dividing by
-(def divisors (range 1 21))
+(defn accu [] (swap! acc + 1))
 
-;; does the sum of the given collection equal zero?
-(defn zerosum? [coll] (= 0 (reduce + coll)))
+(defn div [n d]
+  (if (= 1 d)
+    0
+    (if (= 0 (mod n d))
+      (div n (dec d))
+      1)))
 
-;; given an integer n, return a map of n divided by the divisors range
-(defn divisor-map [n] (map #(mod n %) divisors))
+;; if div equals 0, return n, else call again with accu
 
-;; should hopefully eventually someday somewhere over the rainbow yield the solution
-(println (some #(when (zerosum? (divisor-map %)) %) inf))
+(defn divides? [n]
+  (if (= 0 (div n 20))
+    n
+    (divides? (accu))))
+
+(divides? (accu))
+
+
+
+
+
+
+
+
+
