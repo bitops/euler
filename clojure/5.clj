@@ -1,24 +1,26 @@
+;; solution to problem 5
 
+;; accumulator to track state
 (def acc (atom 1))
 
+;; increments accumulator by 1
 (defn accu [] (swap! acc + 1))
 
+;; the core computation
 (defn div [n d]
   (if (= 1 d)
     0
     (if (= 0 (mod n d))
-      (div n (dec d))
-      1)))
+      (recur n (dec d)) 1)))
 
-;; if div equals 0, return n, else call again with accu
-
+;; call until we find the number that matches
 (defn divides? [n]
   (if (= 0 (div n 20))
     n
-    (divides? (accu))))
+    (recur (accu))))
 
-(divides? (accu))
-
+;; actually run the darn thing to get the answer :)
+(println (str "The number is: " (divides? 1)))
 
 
 
