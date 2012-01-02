@@ -1,5 +1,8 @@
 ;; functions which pop up again and again
 
+;; power function
+(defn pow [n e] (Math/pow n e))
+
 ;; fibonacci sequence generator
 (defn fib [i]
   (loop [a 0
