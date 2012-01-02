@@ -1,3 +1,5 @@
+(ns euler.common)
+
 ;; functions which pop up again and again
 
 ;; power function
